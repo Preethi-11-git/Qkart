@@ -284,6 +284,7 @@ catch(err)
   const isItemInCart = (items, productId) => {
     for(let i=0;i<items.length;i++)
   {
+    console.log(items[i].productId);
         if(items[i].productId===productId)
         {
          return true
@@ -336,14 +337,17 @@ catch(err)
     products,
     productId,
     qty,
-    options = { preventDuplicate: false }
+    options ={preventDuplicate:false}
   ) => {
     if(token)
     {
     if(options)
     {
       if(isItemInCart(CartData,productId))
+      {
+      // console.log("called item in or not")
       enqueueSnackbar("Item already in cart. Use the cart sidebar to update quantity or remove item",{variant: "warning",autoHideDuration:3000})
+      }
       else
       {
          console.log("will do post wait preethi")
@@ -352,7 +356,7 @@ catch(err)
     }
     else
     {
-      console.log("will do post wait preethi")
+      console.log("will do post wait preethi but inside - and +")
       postItems(token,items)
     }
     }
